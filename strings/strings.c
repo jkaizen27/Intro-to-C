@@ -9,7 +9,12 @@
 */
 int string_length(char *s)
 {
-
+	int counter = 0; 
+	printf("%s\n",s);
+	while (*(s+counter) != '\0') {
+		printf("%d\n", *s+counter);
+		counter++; }
+	return counter;
 }
 
 /*
@@ -20,7 +25,7 @@ int string_length(char *s)
 */
 char *reverse_string(char *rv, char *s)
 {
-
+	return 0;
 }
 
 #ifndef TESTING
