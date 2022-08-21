@@ -9,12 +9,9 @@
 */
 int string_length(char *s)
 {
-	int counter = 0; 
-	printf("%s\n",s);
-	while (*(s+counter) != '\0') {
-		printf("%d\n", *s+counter);
-		counter++; }
-	return counter;
+	int i;
+	for (i = 0; (s[i]) != '\0'; ++i);
+	return i;
 }
 
 /*
@@ -25,7 +22,25 @@ int string_length(char *s)
 */
 char *reverse_string(char *rv, char *s)
 {
-	return 0;
+/*
+ * Don't want to do it in-place on s
+	int i, len, temp;
+	len = string_length(s);
+	for (i = 0; i < len/2; ++i) {
+		temp = s[i];
+		s[i] = s[len-i-1];
+		s[len-i-1] = temp;
+	}
+	rv = s;
+*/
+	int counter = 0;
+	int i;
+	for (i = string_length(s) - 1; i >= 0 ; i--) {
+		rv[counter] = s[i];
+		counter++;
+	}
+	rv[counter] = '\0';
+	return rv;
 }
 
 #ifndef TESTING
@@ -42,4 +57,3 @@ int main(void)
     return 0;
 }
 #endif
-    
