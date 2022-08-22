@@ -52,27 +52,28 @@ char *find_char(char *str, char c)
 */
 char *find_string(char *haystack, char *needle)
 {
-	    while (*haystack != '\0') // While there's a value for haystack and not "\0" aka 0 or false
-    {
-        char *pHaystack = haystack; // Set up a pointer to the pointer to haystack string, because we need return a pointer at the end
+	char *first = NULL;
 
-        while (*haystack != '\0' &&
-               *needle != '\0' &&
-               *haystack == *needle) // While both values exist and are equal to each other
-        {
-            haystack++; // Increment the address of haystack by 1 byte (char = 1 byte) in memory, subsequently the next letter
-            needle++;   // Increment the address of needle by 1 byte (char = 1 byte) in memory, subsequently the next letter
-        }
+	while (*haystack != '\0') {
+		if (*haystack == *needle) {
+			first = haystack;
+			while (*haystack == *needle) {
+				needle++;
+				haystack++;
+				if (*needle == '\0') {
+					return first;
+				}
+				else if (*haystack == '\0') {
+					return NULL;
+				}
 
-        if (*needle == '\0') // If the value of needle reaches the end
-        {
-            return pHaystack; // Return the pointer to *haystack, pHaystack incremented only if
-        }
-
-        haystack++; // Increments haystack if the letters don't match, pHaystack also updates
-    }
-
-    return NULL; // If nothing is found
+			}
+		}
+		else {
+			haystack++;
+		}
+	}
+	return NULL;
 }
 
 #ifndef TESTING
