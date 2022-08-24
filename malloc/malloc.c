@@ -12,6 +12,8 @@
 */
 char *string_dup(char *src)
 {
+	int length = string_length(src);
+	char* dup = (char*) malloc(length*sizeof(char));
 
 }
 
