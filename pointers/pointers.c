@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 /*
     Given a character pointer x (that points to an array of chars), and a
     character pointer y, copies the character contents of y over to x. Pointer
